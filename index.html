@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="description" content="VAYA JEWELS creates considered jewelry for every version of you." />
+    <title>VAYA JEWELS | Jewelry That Speaks</title>
+  </head>
+  <body>
+    <header class="site-header" id="site-header">
+      <div class="header-inner">
+        <a class="brand-mark" href="#home" aria-label="VAYA Jewels home">
+          <img src="assets/logo.png" alt="VAYA JEWELS" />
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#home">Home</a>
+          <a href="#collection">Collection</a>
+          <a href="#about">About</a>
+        </nav>
+        <div class="header-actions">
+          <button class="icon-button wishlist-toggle" type="button" aria-label="View wishlist" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z" /></svg>
+            <span class="sr-only">Wishlist</span>
+          </button>
+          <button class="icon-button bag-toggle" type="button" aria-label="Shopping bag, 0 items">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l1 13H5L6 8Z" /><path d="M9 8V6a3 3 0 0 1 6 0v2" /></svg>
+            <span class="bag-count" aria-hidden="true">0</span>
+          </button>
+          <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-nav" aria-hidden="true">
+        <a href="#home">Home</a><a href="#collection">Collection</a><a href="#about">About</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-orbit orbit-one"></div>
+        <div class="hero-orbit orbit-two"></div>
+        <div class="hero-copy reveal">
+          <p class="eyebrow">THE ART OF ADORNMENT <span></span> EST. 2016</p>
+          <h1>Jewelry<br /><em>that speaks.</em></h1>
+          <p class="hero-intro">Quietly striking pieces for the moments that become part of your story.</p>
+          <a class="text-button" href="#collection">Explore collection <span>↗</span></a>
+        </div>
+        <div class="hero-art" aria-label="Object 01 necklace photograph" role="img">
+          <img class="hero-product-image" src="assets/products/object.png" alt="Object 01 necklace" />
+          <span class="art-caption">OBJECT 01 <i></i> LUMEN FORM</span>
+        </div>
+        <div class="hero-footer"><span>Scroll to discover</span><span class="scroll-line"></span><span>01 / 04</span></div>
+      </section>
+
+      <section class="collection section-wrap" id="collection">
+        <div class="section-heading reveal">
+          <p class="eyebrow">THE EDIT</p>
+          <h2>The collection</h2>
+          <p>Small gestures. Lasting impressions.</p>
+        </div>
+        <div class="filter-row reveal" role="tablist" aria-label="Filter collection">
+          <button class="filter-button is-active" type="button" data-filter="all" role="tab" aria-selected="true">All pieces</button>
+          <button class="filter-button" type="button" data-filter="rings" role="tab" aria-selected="false">Rings</button>
+          <button class="filter-button" type="button" data-filter="necklaces" role="tab" aria-selected="false">Necklaces</button>
+          <button class="filter-button" type="button" data-filter="earrings" role="tab" aria-selected="false">Earrings</button>
+        </div>
+        <div class="product-grid" id="product-grid"></div>
+      </section>
+
+      <section class="manifesto" id="about">
+        <div class="manifesto-inner section-wrap">
+          <div class="manifesto-heading reveal"><p class="eyebrow">THE VAYA WAY</p><h2>Made for the<br /><em>meaningful.</em></h2></div>
+          <div class="manifesto-copy reveal"><p>We believe the pieces closest to us should feel like they have always belonged. VAYA is an exploration of shape, light, and the intimate language of adornment.</p><a class="text-button" href="#collection">Our philosophy <span>↗</span></a></div>
+          <div class="feature-list">
+            <article class="feature reveal"><span class="feature-number">01</span><h3>Crafted with intention</h3><p>Thoughtful forms, made slowly and made to last.</p></article>
+            <article class="feature reveal"><span class="feature-number">02</span><h3>Timeless elegance</h3><p>A softer kind of statement, beyond the season.</p></article>
+            <article class="feature reveal"><span class="feature-number">03</span><h3>Made to be remembered</h3><p>Jewelry that holds a feeling long after the moment.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta section-wrap reveal">
+        <div class="cta-line"></div><p class="eyebrow">A PIECE OF YOUR STORY</p><h2>Find your<br /><em>signature piece.</em></h2><a class="outline-button" href="#collection">Discover VAYA <span>↗</span></a><div class="cta-orbit"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner"><a class="footer-brand" href="#home">VAYA<br /><span>JEWELS</span></a><div class="footer-links"><a href="https://www.tiktok.com/@vaya.jewels?is_from_webapp=1&amp;sender_device=pc" target="_blank" rel="noopener noreferrer">TikTok</a><a href="mailto:hello@vayajewels.com">Contact</a></div><p>© 2024 VAYA JEWELS<br />Made with intention.</p></div>
+    </footer>
+
+    <div class="modal-backdrop" id="quick-view" aria-hidden="true">
+      <div class="quick-modal" role="dialog" aria-modal="true" aria-labelledby="modal-name">
+        <button class="modal-close" type="button" aria-label="Close quick view">×</button>
+        <div class="modal-visual product-visual visual-ring" id="modal-visual"><span>VAYA / OBJECT</span></div>
+        <div class="modal-details"><p class="eyebrow" id="modal-category">RING</p><h2 id="modal-name">Product name</h2><p class="modal-price" id="modal-price">$0.00</p><p id="modal-description">A considered piece for every day and every story still to come.</p><button class="solid-button modal-add" type="button">Add to bag <span>+</span></button></div>
+      </div>
+    </div>
+    <div class="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
