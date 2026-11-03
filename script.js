@@ -1,10 +1,18 @@
 const products = [
-	{ id: 1, name: 'Solace Ring', category: 'rings', label: 'RING', price: '$420', visual: 'visual-ring', image: 'assets/products/solace-ring.jpg', description: 'A softly sculpted band with an unexpected glint of turquoise. Designed to become part of your everyday language.' },
-	{ id: 2, name: 'Aster Drop', category: 'earrings', label: 'EARRINGS', price: '$285', visual: 'visual-earrings', image: 'assets/products/aster-drop.png', description: 'Light-catching drops that move with you. A quiet punctuation mark for the moments worth remembering.' },
-	{ id: 3, name: 'Arc Pendant', category: 'necklaces', label: 'NECKLACE', price: '$610', visual: 'visual-necklace', image: 'assets/products/arc-pendant.PNG', description: 'An open arc suspended on a fine chain, balancing fluidity and form with effortless clarity.' },
-	{ id: 4, name: 'Mira Signet', category: 'rings', label: 'RING', price: '$360', visual: 'visual-ring', image: 'assets/products/mira-signet.jpg', description: 'A modern signet with a tactile, softened edge. Made to hold your own meaning.' },
-	{ id: 5, name: 'Halo Chain', category: 'necklaces', label: 'NECKLACE', price: '$540', visual: 'visual-necklace', image: 'assets/products/halo-chain.png', description: 'A luminous chain with a generous silhouette, made for layering or standing beautifully alone.' },
-	{ id: 6, name: 'Eclipse Studs', category: 'earrings', label: 'EARRINGS', price: '$240', visual: 'visual-earrings', image: 'assets/products/eclipse-studs.png', description: 'Two small studies in contrast, finished to catch the light from every angle.' }
+	{ id: 1, name: 'Bague Monaco', category: 'rings', label: 'RING', price: 'Price on request', visual: 'visual-ring', image: 'assets/products/rings/Bague Monaco.jpg', description: 'Pricing and product details are available on request.' },
+	{ id: 2, name: 'Sipineli Ring', category: 'rings', label: 'RING', price: 'Price on request', visual: 'visual-ring', image: 'assets/products/rings/Sipineli ring.jpg', description: 'Pricing and product details are available on request.' },
+	{ id: 3, name: 'Bracelet', category: 'bracelets', label: 'BRACELET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/bracelets/bracelet.jpg', description: 'Pricing and product details are available on request.' },
+	{ id: 4, name: 'Bracelet (2)', category: 'bracelets', label: 'BRACELET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/bracelets/bracelet (2).jpg', description: 'Pricing and product details are available on request.' },
+	{ id: 5, name: 'Bracelet (3)', category: 'bracelets', label: 'BRACELET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/bracelets/bracelet (3).jpg', description: 'Pricing and product details are available on request.' },
+	{ id: 6, name: 'Collier et bracelet Clover on or', category: 'necklaces', label: 'NECKLACE', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/necklaces/Collier et bracelet Clover on or.jpg', description: 'Pricing and product details are available on request.' },
+	{ id: 7, name: 'Collier et bracelet Clover', category: 'necklaces', label: 'NECKLACE', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/necklaces/Collier et bracelet Clover.jpg', description: 'Pricing and product details are available on request.' },
+	{ id: 9, name: 'Parure Tiffany & Co', category: 'necklaces', label: 'NECKLACE', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/necklaces/Parure Tiffany & Co.jpg', description: 'Pricing and product details are available on request.' },
+	{ id: 10, name: 'Necklace Set', category: 'sets', label: 'JEWELRY SET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/jewelry sets/neckless.jpg', description: 'Pricing and product details are available on request.' },
+	{ id: 11, name: 'Parure argentée', category: 'sets', label: 'JEWELRY SET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/jewelry sets/Parure argentée.jpg', description: 'Pricing and product details are available on request.' },
+	{ id: 12, name: 'Parure Dior en acier', category: 'sets', label: 'JEWELRY SET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/jewelry sets/Parure Dior en acier.jpg', description: 'Pricing and product details are available on request.' },
+	{ id: 13, name: 'Parure Roberto 2pcs', category: 'sets', label: 'JEWELRY SET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/jewelry sets/Parure Roberto 2pcs.jpg', description: 'Pricing and product details are available on request.' },
+	{ id: 14, name: 'Parure Roberto 3pcs', category: 'sets', label: 'JEWELRY SET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/jewelry sets/Parure Roberto 3pcs.jpg', description: 'Pricing and product details are available on request.' },
+	{ id: 15, name: 'Parure Roberto', category: 'sets', label: 'JEWELRY SET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/jewelry sets/Parure Roberto.jpg', description: 'Pricing and product details are available on request.' }
 ];
 
 const grid = document.querySelector('#product-grid');
@@ -18,11 +26,18 @@ bagButton.setAttribute('aria-label', `Shopping bag, ${bagItems} item${bagItems =
 
 function visualMarkup(product, label = `VAYA / 0${product.id}`, isModal = false) {
 	const image = product.image ? `<img src="${product.image}" alt="${product.name}" loading="${isModal ? 'eager' : 'lazy'}" decoding="async" />` : '';
-	return `<div${isModal ? ' id="modal-visual"' : ''} class="${isModal ? 'modal-visual ' : ''}product-visual ${product.visual}${product.image ? ' has-product-image' : ''}">${image}<span>${label}</span></div>`;
+	const caption = isModal ? `<span>${label}</span>` : '';
+	return `<div${isModal ? ' id="modal-visual"' : ''} class="${isModal ? 'modal-visual ' : ''}product-visual ${product.visual}${product.image ? ' has-product-image' : ''}">${image}${caption}</div>`;
 }
 
 function renderProducts(filter = 'all') {
-	grid.innerHTML = products.map((product) => `
+	const visibleProducts = filter === 'all' ? products : products.filter((product) => product.category === filter);
+	if (visibleProducts.length === 0) {
+		const categoryName = filter === 'sets' ? 'Jewelry sets' : filter.charAt(0).toUpperCase() + filter.slice(1);
+		grid.innerHTML = `<p class="collection-empty" role="status">${categoryName} are coming soon.</p>`;
+		return;
+	}
+	grid.innerHTML = visibleProducts.map((product) => `
 		<article class="product-card reveal is-visible" data-category="${product.category}" data-id="${product.id}" tabindex="0" role="button" aria-label="View ${product.name}">
 			${visualMarkup(product)}
 			<div class="product-info"><div><p class="product-category">${product.label}</p><h3>${product.name}</h3><p class="product-price">${product.price}</p></div><div class="card-actions"><button class="heart-button${favoriteIds.has(product.id) ? ' is-liked' : ''}" type="button" aria-label="${favoriteIds.has(product.id) ? 'Remove' : 'Add'} ${product.name} ${favoriteIds.has(product.id) ? 'from' : 'to'} wishlist" aria-pressed="${favoriteIds.has(product.id)}"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z" /></svg></button><button class="add-button" type="button">Add +</button></div></div>
@@ -33,7 +48,6 @@ function renderProducts(filter = 'all') {
 		card.querySelector('.heart-button').addEventListener('click', (event) => { event.stopPropagation(); const heart = event.currentTarget; const id = Number(card.dataset.id); const liked = favoriteIds.has(id); if (liked) favoriteIds.delete(id); else favoriteIds.add(id); heart.classList.toggle('is-liked', !liked); heart.setAttribute('aria-pressed', !liked); heart.setAttribute('aria-label', `${!liked ? 'Remove' : 'Add'} ${products.find((item) => item.id === id).name} ${!liked ? 'from' : 'to'} wishlist`); showToast(!liked ? 'Added to wishlist' : 'Removed from wishlist'); });
 		card.querySelector('.add-button').addEventListener('click', (event) => { event.stopPropagation(); addToBag(products.find((item) => item.id === Number(card.dataset.id)).name); });
 	});
-	if (filter !== 'all') grid.querySelectorAll('.product-card').forEach((card) => card.classList.toggle('is-hidden', card.dataset.category !== filter));
 }
 
 function addToBag(name) { bagItems += 1; sessionStorage.setItem('vaya-bag-count', bagItems); bagCount.textContent = bagItems; bagButton.setAttribute('aria-label', `Shopping bag, ${bagItems} item${bagItems === 1 ? '' : 's'}`); bagCount.classList.remove('bump'); void bagCount.offsetWidth; bagCount.classList.add('bump'); showToast(`${name} added to bag`); }
@@ -77,4 +91,6 @@ window.addEventListener('scroll', () => {
 	});
 }, { passive: true });
 const hero = document.querySelector('.hero'); const heroArt = document.querySelector('.hero-art'); let pointerFrameId = null; let pointerX = 0; let pointerY = 0; hero.addEventListener('pointermove', (event) => { if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.innerWidth < 761) return; pointerX = event.clientX; pointerY = event.clientY; if (pointerFrameId !== null) return; pointerFrameId = window.requestAnimationFrame(() => { const bounds = hero.getBoundingClientRect(); const x = ((pointerX - bounds.left) / bounds.width - .5) * 12; const y = ((pointerY - bounds.top) / bounds.height - .5) * 8; heroArt.style.setProperty('--mouse-x', `${x}px`); heroArt.style.setProperty('--mouse-y', `${y}px`); pointerFrameId = null; }); }); hero.addEventListener('pointerleave', () => { if (pointerFrameId !== null) window.cancelAnimationFrame(pointerFrameId); pointerFrameId = null; heroArt.style.setProperty('--mouse-x', '0px'); heroArt.style.setProperty('--mouse-y', '0px'); });
+const heroAnimationObserver = new IntersectionObserver(([entry]) => hero.classList.toggle('is-animation-visible', entry.isIntersecting), { threshold: .01 });
+heroAnimationObserver.observe(hero);
 const revealObserver = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); revealObserver.unobserve(entry.target); } }), { threshold: .12 }); document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
