@@ -1,9 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="assets/logo.png" />
+    <meta name="theme-color" content="#f3f0e9" />
+    <script>
+      try {
+        const savedTheme = localStorage.getItem('vaya-theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch {}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=DM+Sans:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" />
@@ -26,6 +35,10 @@
           <button class="icon-button wishlist-toggle" type="button" aria-label="View wishlist" aria-pressed="false">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z" /></svg>
             <span class="sr-only">Wishlist</span>
+          </button>
+          <button class="icon-button theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
+            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.3 8.3 0 0 1 8.9 3.8 8.4 8.4 0 1 0 20.2 15.1Z" /></svg>
+            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" /></svg>
           </button>
           <button class="icon-button bag-toggle" type="button" aria-label="Shopping bag, 0 items">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l1 13H5L6 8Z" /><path d="M9 8V6a3 3 0 0 1 6 0v2" /></svg>
@@ -52,7 +65,7 @@
           <a class="text-button" href="#collection">Explore collection <span>↗</span></a>
         </div>
         <div class="hero-art" aria-label="Object 01 necklace photograph" role="img">
-          <img class="hero-product-image" src="assets/products/object.png" alt="Object 01 necklace" fetchpriority="high" decoding="async" />
+          <img class="hero-product-image" src="assets/products/object.avif" alt="Object 01 necklace" fetchpriority="high" decoding="async" />
           <span class="art-caption">OBJECT 01 <i></i> LUMEN FORM</span>
         </div>
         <div class="hero-footer"><span>Scroll to discover</span><span class="scroll-line"></span><span>01 / 04</span></div>
@@ -64,12 +77,8 @@
           <h2>The collection</h2>
           <p>Small gestures. Lasting impressions.</p>
         </div>
-        <div class="filter-row reveal" role="tablist" aria-label="Filter collection">
-          <button class="filter-button is-active" type="button" data-filter="all" role="tab" aria-selected="true">All pieces</button>
-          <button class="filter-button" type="button" data-filter="rings" role="tab" aria-selected="false">Rings</button>
-          <button class="filter-button" type="button" data-filter="necklaces" role="tab" aria-selected="false">Necklaces</button>
-          <button class="filter-button" type="button" data-filter="bracelets" role="tab" aria-selected="false">Bracelets</button>
-          <button class="filter-button" type="button" data-filter="sets" role="tab" aria-selected="false">Jewelry sets</button>
+        <div class="filter-row reveal" id="collection-filter">
+          <div id="collection-filter-track"></div>
         </div>
         <div class="product-grid" id="product-grid"></div>
       </section>
@@ -120,6 +129,6 @@
       </section>
     </div>
     <div class="toast" role="status" aria-live="polite"></div>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
   </body>
 </html>

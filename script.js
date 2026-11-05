@@ -1,27 +1,55 @@
+import { createElement, useState } from 'react';
+import { createRoot } from 'react-dom/client';
+import { SegmentedControl } from 'glisse';
+import 'glisse/styles.css';
+
 const products = [
-	{ id: 1, name: 'Bague Monaco', category: 'rings', label: 'RING', price: 'Price on request', visual: 'visual-ring', image: 'assets/products/rings/Bague Monaco.jpg', description: 'Pricing and product details are available on request.' },
-	{ id: 2, name: 'Sipineli Ring', category: 'rings', label: 'RING', price: 'Price on request', visual: 'visual-ring', image: 'assets/products/rings/Sipineli ring.jpg', description: 'Pricing and product details are available on request.' },
-	{ id: 3, name: 'Bracelet', category: 'bracelets', label: 'BRACELET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/bracelets/bracelet.jpg', description: 'Pricing and product details are available on request.' },
-	{ id: 4, name: 'Bracelet (2)', category: 'bracelets', label: 'BRACELET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/bracelets/bracelet (2).jpg', description: 'Pricing and product details are available on request.' },
-	{ id: 5, name: 'Bracelet (3)', category: 'bracelets', label: 'BRACELET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/bracelets/bracelet (3).jpg', description: 'Pricing and product details are available on request.' },
-	{ id: 6, name: 'Collier et bracelet Clover on or', category: 'necklaces', label: 'NECKLACE', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/necklaces/Collier et bracelet Clover on or.jpg', description: 'Pricing and product details are available on request.' },
-	{ id: 7, name: 'Collier et bracelet Clover', category: 'necklaces', label: 'NECKLACE', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/necklaces/Collier et bracelet Clover.jpg', description: 'Pricing and product details are available on request.' },
-	{ id: 9, name: 'Parure Tiffany & Co', category: 'necklaces', label: 'NECKLACE', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/necklaces/Parure Tiffany & Co.jpg', description: 'Pricing and product details are available on request.' },
-	{ id: 10, name: 'Necklace Set', category: 'sets', label: 'JEWELRY SET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/jewelry sets/neckless.jpg', description: 'Pricing and product details are available on request.' },
-	{ id: 11, name: 'Parure argentée', category: 'sets', label: 'JEWELRY SET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/jewelry sets/Parure argentée.jpg', description: 'Pricing and product details are available on request.' },
-	{ id: 12, name: 'Parure Dior en acier', category: 'sets', label: 'JEWELRY SET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/jewelry sets/Parure Dior en acier.jpg', description: 'Pricing and product details are available on request.' },
-	{ id: 13, name: 'Parure Roberto 2pcs', category: 'sets', label: 'JEWELRY SET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/jewelry sets/Parure Roberto 2pcs.jpg', description: 'Pricing and product details are available on request.' },
-	{ id: 14, name: 'Parure Roberto 3pcs', category: 'sets', label: 'JEWELRY SET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/jewelry sets/Parure Roberto 3pcs.jpg', description: 'Pricing and product details are available on request.' },
-	{ id: 15, name: 'Parure Roberto', category: 'sets', label: 'JEWELRY SET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/jewelry sets/Parure Roberto.jpg', description: 'Pricing and product details are available on request.' }
+	{ id: 1, name: 'Bague Monaco', category: 'rings', label: 'RING', price: 'Price on request', visual: 'visual-ring', image: 'assets/products/rings/Bague Monaco.avif', description: 'Pricing and product details are available on request.' },
+	{ id: 2, name: 'Sipineli Ring', category: 'rings', label: 'RING', price: 'Price on request', visual: 'visual-ring', image: 'assets/products/rings/Sipineli ring.avif', description: 'Pricing and product details are available on request.' },
+	{ id: 3, name: 'Bracelet', category: 'bracelets', label: 'BRACELET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/bracelets/bracelet.avif', description: 'Pricing and product details are available on request.' },
+	{ id: 4, name: 'Bracelet (2)', category: 'bracelets', label: 'BRACELET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/bracelets/bracelet (2).avif', description: 'Pricing and product details are available on request.' },
+	{ id: 5, name: 'Bracelet (3)', category: 'bracelets', label: 'BRACELET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/bracelets/bracelet (3).avif', description: 'Pricing and product details are available on request.' },
+	{ id: 6, name: 'Collier et bracelet Clover on or', category: 'necklaces', label: 'NECKLACE', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/necklaces/Collier et bracelet Clover on or.avif', description: 'Pricing and product details are available on request.' },
+	{ id: 7, name: 'Collier et bracelet Clover', category: 'necklaces', label: 'NECKLACE', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/necklaces/Collier et bracelet Clover.avif', description: 'Pricing and product details are available on request.' },
+	{ id: 9, name: 'Parure Tiffany & Co', category: 'necklaces', label: 'NECKLACE', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/necklaces/Parure Tiffany & Co.avif', description: 'Pricing and product details are available on request.' },
+	{ id: 10, name: 'Necklace Set', category: 'sets', label: 'JEWELRY SET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/jewelry sets/neckless.avif', description: 'Pricing and product details are available on request.' },
+	{ id: 11, name: 'Parure argentée', category: 'sets', label: 'JEWELRY SET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/jewelry sets/Parure argentée.avif', description: 'Pricing and product details are available on request.' },
+	{ id: 12, name: 'Parure Dior en acier', category: 'sets', label: 'JEWELRY SET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/jewelry sets/Parure Dior en acier.avif', description: 'Pricing and product details are available on request.' },
+	{ id: 13, name: 'Parure Roberto 2pcs', category: 'sets', label: 'JEWELRY SET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/jewelry sets/Parure Roberto 2pcs.avif', description: 'Pricing and product details are available on request.' },
+	{ id: 14, name: 'Parure Roberto 3pcs', category: 'sets', label: 'JEWELRY SET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/jewelry sets/Parure Roberto 3pcs.avif', description: 'Pricing and product details are available on request.' },
+	{ id: 15, name: 'Parure Roberto', category: 'sets', label: 'JEWELRY SET', price: 'Price on request', visual: 'visual-necklace', image: 'assets/products/jewelry sets/Parure Roberto.avif', description: 'Pricing and product details are available on request.' }
 ];
 
 const grid = document.querySelector('#product-grid');
 const bagCount = document.querySelector('.bag-count');
 const bagButton = document.querySelector('.bag-toggle');
+const themeButton = document.querySelector('.theme-toggle');
+const themeColor = document.querySelector('meta[name="theme-color"]');
 const toast = document.querySelector('.toast');
 const favoriteIds = new Set();
 const storedBagItems = JSON.parse(sessionStorage.getItem('vaya-bag-items') || '[]');
 let bagItems = Array.isArray(storedBagItems) ? storedBagItems.filter((item) => products.some((product) => product.id === item.id) && Number.isSafeInteger(item.quantity) && item.quantity >= 0) : [];
+
+function setTheme(theme, persist = false) {
+	const isDark = theme === 'dark';
+	document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
+	themeButton.setAttribute('aria-pressed', String(isDark));
+	themeButton.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} mode`);
+	themeButton.title = `Switch to ${isDark ? 'light' : 'dark'} mode`;
+	themeColor.content = isDark ? '#10121a' : '#f3f0e9';
+	if (persist) {
+		try {
+			localStorage.setItem('vaya-theme', isDark ? 'dark' : 'light');
+		} catch {
+			showToast('Theme changed, but could not be saved for next time.');
+		}
+	}
+}
+
+setTheme(document.documentElement.dataset.theme, false);
+themeButton.addEventListener('click', () => {
+	setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark', true);
+});
 
 function getBagItemCount() {
 	return bagItems.reduce((total, item) => total + item.quantity, 0);
@@ -153,7 +181,33 @@ function openBag() { renderBag(); returnFocusElement = bagButton; lockPage(); ba
 function closeBag() { bagModal.classList.remove('is-open'); bagModal.setAttribute('aria-hidden', 'true'); bagButton.setAttribute('aria-expanded', 'false'); unlockPage(); }
 
 renderProducts();
-document.querySelectorAll('.filter-button').forEach((button) => button.addEventListener('click', () => { const filter = button.dataset.filter; if (button.classList.contains('is-active')) return; document.querySelectorAll('.filter-button').forEach((item) => { item.classList.remove('is-active'); item.setAttribute('aria-selected', 'false'); }); button.classList.add('is-active'); button.setAttribute('aria-selected', 'true'); grid.classList.add('is-filtering'); setTimeout(() => { renderProducts(filter); grid.classList.remove('is-filtering'); }, 260); }));
+function FilterControls() {
+	const [filter, setFilter] = useState('all');
+	const items = [
+		{ value: 'all', label: 'All pieces' },
+		{ value: 'rings', label: 'Rings' },
+		{ value: 'necklaces', label: 'Necklaces' },
+		{ value: 'bracelets', label: 'Bracelets' },
+		{
+			value: 'sets',
+			label: createElement('span', { className: 'filter-label' }, 'Jewelry sets')
+		}
+	];
+	return createElement(SegmentedControl, {
+		'aria-label': 'Filter collection',
+		items,
+		value: filter,
+		onValueChange: (nextFilter) => {
+			setFilter(nextFilter);
+			grid.classList.add('is-filtering');
+			setTimeout(() => {
+				renderProducts(nextFilter);
+				grid.classList.remove('is-filtering');
+			}, 260);
+		}
+	});
+}
+createRoot(document.querySelector('#collection-filter-track')).render(createElement(FilterControls));
 document.querySelector('.modal-close').addEventListener('click', closeModal); modal.addEventListener('click', (event) => { if (event.target === modal) closeModal(); }); document.querySelector('.bag-close').addEventListener('click', closeBag); document.querySelector('.bag-continue').addEventListener('click', closeBag); bagModal.addEventListener('click', (event) => { if (event.target === bagModal) closeBag(); }); document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && modal.classList.contains('is-open')) closeModal(); else if (event.key === 'Escape' && bagModal.classList.contains('is-open')) closeBag(); });
 document.querySelector('.wishlist-toggle').addEventListener('click', (event) => { const active = event.currentTarget.classList.toggle('is-liked'); event.currentTarget.setAttribute('aria-pressed', active); showToast(active ? 'Wishlist selected' : 'Wishlist cleared'); });
 bagButton.addEventListener('click', openBag);
